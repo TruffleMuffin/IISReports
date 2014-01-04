@@ -14,6 +14,7 @@
 
         function update(endpoint) {
             $.get(endpoint, function (data) {
+                data = _.filter(data, function (model) { return model.UserAgent.indexOf("ELB-HealthChecker") < 0 && model.UserAgent.indexOf("NewRelicPinger") < 0; });
                 var totalHits = _.reduce(data, function (memo, model) { return memo + model.Count }, 0);
                 $('#totalvists').html(totalHits);
                 var formattedData = _.map(data, function (model) {
@@ -38,6 +39,7 @@
                         seriesData[_.indexOf(seriesData, seriesItem)][1] += model[1];
                     }
                 });
+                $('#agent-breakdown').empty();
                 _.each(seriesData, function(model) {
                     $('#agent-breakdown').append('<li>' + model[0] + ' - ' + Math.floor((model[1] / 100) * totalHits) + '</li>');
                 });

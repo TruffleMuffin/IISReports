@@ -37,5 +37,12 @@ namespace IISReports.Controllers
         {
             return service.GetHits(year, month);
         }
+
+        [HttpGet]
+        [Route("Agents/{year:int}/{month:int}")]
+        public IEnumerable<AgentViewModel> GetAgents(int year, int month)
+        {
+            return service.GetAgents(year, month);
+        }
     }
 }

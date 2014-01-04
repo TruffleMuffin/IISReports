@@ -94,6 +94,25 @@ namespace IISReports.Services
             return searchResult.facets.Facet<TermsStatsFacetResult>("ResponseCodes").terms.Select(a => new HitAndResponseViewModel { Code = a.term, Count = a.count }).ToArray();
         }
 
+        public IEnumerable<AgentViewModel> GetAgents(int year, int month)
+        {
+            var serializer = new JsonNetSerializer();
+
+            // Build the Search Query based on the input
+            var elasticQuery = new QueryBuilder<IISViewModel>()
+                .Facets(f => f
+                    .Terms(t => t.FacetName("Agents").Field(k => k.UserAgent))
+                )
+                .Build();
+
+            // Execute the search
+            string result = connection.Post(Commands.Search(GenerateIndexName(year, month), LOG_TYPE), elasticQuery);
+            var searchResult = serializer.ToSearchResult<IISViewModel>(result);
+
+
+            return searchResult.facets.Facet<TermsFacetResult>("Agents").terms.Select(a => new AgentViewModel(a.term, a.count)).ToArray();
+        }
+
         private static string GenerateIndexName(int year, int month)
         {
             return "logs-" + year + "-" + month;
@@ -142,5 +161,6 @@ namespace IISReports.Services
                 return false;
             }
         }
+
     }
 }

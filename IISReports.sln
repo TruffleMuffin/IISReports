@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IISImporter", "IISImporter\IISImporter.csproj", "{1001B213-1068-47B0-93DB-35B3D3972261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IISReports", "IISReports\IISReports.csproj", "{A66FD90B-0DE0-426D-99D1-7806EBCCEBD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IISContracts", "IISContracts\IISContracts.csproj", "{5B85AD79-B6BE-4806-A80F-37E450D64DE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1001B213-1068-47B0-93DB-35B3D3972261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1001B213-1068-47B0-93DB-35B3D3972261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1001B213-1068-47B0-93DB-35B3D3972261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1001B213-1068-47B0-93DB-35B3D3972261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A66FD90B-0DE0-426D-99D1-7806EBCCEBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A66FD90B-0DE0-426D-99D1-7806EBCCEBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A66FD90B-0DE0-426D-99D1-7806EBCCEBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A66FD90B-0DE0-426D-99D1-7806EBCCEBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B85AD79-B6BE-4806-A80F-37E450D64DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B85AD79-B6BE-4806-A80F-37E450D64DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B85AD79-B6BE-4806-A80F-37E450D64DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B85AD79-B6BE-4806-A80F-37E450D64DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

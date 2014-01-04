@@ -23,7 +23,7 @@ namespace IISImporter
 
                 var client = new HttpClient();
 
-                foreach (var logFilePath in Directory.GetFiles(workingDirectory).Take(10))
+                foreach (var logFilePath in Directory.GetFiles(workingDirectory))
                 {
                     Console.WriteLine("Executing: " + logFilePath);
 

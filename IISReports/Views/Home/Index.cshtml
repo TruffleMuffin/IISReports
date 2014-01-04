@@ -15,6 +15,7 @@
         function update(endpoint) {
             $.get(endpoint, function (data) {
                 var totalHits = _.reduce(data, function (memo, model) { return memo + model.Count }, 0);
+                $('#totalvists').html(totalHits);
                 var formattedData = _.map(data, function (model) {
                     var name = model.AgentInfo.Family;
                     if (model.AgentInfo.Major != null && model.AgentInfo.Major != '') {
@@ -26,7 +27,6 @@
                     if (model.AgentInfo.Patch != null && model.AgentInfo.Patch != '') {
                         name += '-' + model.AgentInfo.Patch;
                     }
-
                     return [name, ((model.Count / totalHits) * 100)];
                 });
                 var seriesData = [];
@@ -38,6 +38,9 @@
                         seriesData[_.indexOf(seriesData, seriesItem)][1] += model[1];
                     }
                 });
+                _.each(seriesData, function(model) {
+                    $('#agent-breakdown').append('<li>' + model[0] + ' - ' + Math.floor((model[1] / 100) * totalHits) + '</li>');
+                });
 
                 $('#container').highcharts({
                     chart: {
@@ -46,7 +49,7 @@
                         plotShadow: false
                     },
                     title: {
-                        text: 'CDSM Browser Coverage'
+                        text: 'Browser Coverage'
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -99,3 +102,9 @@
     <button id="go">Go</button>
 </div>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="summary data">
+    <p>There were a total number of <span id="totalvists"></span> visits for this period.</p>
+    <ul id="agent-breakdown">
+        
+    </ul>
+</div>

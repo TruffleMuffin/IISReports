@@ -1,10 +1,12 @@
-﻿using UAParser;
+﻿using System;
+using System.IO;
+using UAParser;
 
 namespace IISReports.Models
 {
     public class AgentViewModel
     {
-        private static readonly Parser parser = Parser.GetDefault();
+        private static readonly Parser parser = Parser.FromYamlFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regexes.yaml"));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AgentViewModel"/> class.
@@ -15,7 +17,7 @@ namespace IISReports.Models
         {
             this.UserAgent = userAgent;
             this.Count = count;
-            var info = parser.Parse(userAgent);
+            var info = parser.Parse(userAgent.Replace("+", " "));
             this.AgentInfo = info.UserAgent;
             this.Device = info.Device.ToString();
             this.OS = info.OS.ToString();
